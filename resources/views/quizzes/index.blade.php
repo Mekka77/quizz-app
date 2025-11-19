@@ -19,15 +19,15 @@
                 <div class="card shadow-sm border-0 h-100">
                     <div class="card-body d-flex flex-column">
                         <span class="badge rounded-pill text-bg-primary align-self-start mb-2">
-                            Quiz #{{ $quiz['id'] }}
+                            Quiz #{{ $quiz->id }}
                         </span>
 
-                        <h5 class="card-title fw-semibold mb-2">{{ $quiz['title'] }}</h5>
+                        <h5 class="card-title fw-semibold mb-2">{{ $quiz->title }}</h5>
                         <p class="text-muted small flex-grow-1 mb-3">
                             Krótki quiz sprawdzający podstawy tego tematu.
                         </p>
 
-                        <a href="{{ route('quizzes.show', $quiz['id']) }}"
+                        <a href="{{ route('quizzes.show', $quiz->id) }}"
                            class="btn btn-outline-primary mt-auto">
                             Rozpocznij →
                         </a>
