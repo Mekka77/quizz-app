@@ -21,23 +21,43 @@
 
     <h3 class="fw-bold mb-3">Pytania</h3>
 
-    @foreach ($quiz->questions as $index => $q)
-        <div class="card shadow-sm border-0 mb-3">
-            <div class="card-body p-3 p-md-4">
-                <div class="d-flex align-items-center gap-3 mb-3">
-                    <span class="question-chip">
-                        {{ $index + 1 }}
-                    </span>
-                    <h5 class="fw-semibold mb-0">{{ $q->text }}</h5>
-                </div>
+    <form action="{{ route('quizzes.submit', $quiz) }}" method="POST">
+        @csrf
 
-                @foreach ($q->answers as $answer)
-                    <button type="button"
-                            class="answer-btn btn btn-outline-primary w-100 text-start mb-2">
-                        {{ $answer->text }}
-                    </button>
-                @endforeach
+        @foreach ($quiz->questions as $index => $q)
+            <div class="card shadow-sm border-0 mb-4 @error('answers.' . $q->id) border-danger @enderror">
+                <div class="card-body p-3 p-md-4">
+                    <div class="d-flex align-items-center gap-3 mb-3">
+                        <span class="question-chip">
+                            {{ $index + 1 }}
+                        </span>
+                        <h5 class="fw-semibold mb-0">{{ $q->text }}</h5>
+                    </div>
+
+                    @error('answers.' . $q->id)
+                        <div class="ps-md-5 mb-2">
+                            <small class="text-danger fw-semibold">{{ $message }}</small>
+                        </div>
+                    @enderror
+
+                    <div class="ps-md-5">
+                        @foreach ($q->answers as $answer)
+                            <input type="radio" name="answers[{{ $q->id }}]" value="{{ $answer->id }}" id="answer-{{ $answer->id }}" class="answer-radio"
+                                   @if(old('answers.' . $q->id) == $answer->id) checked @endif
+                            >
+                            <label for="answer-{{ $answer->id }}" class="answer-label">
+                                {{ $answer->text }}
+                            </label>
+                        @endforeach
+                    </div>
+                </div>
             </div>
+        @endforeach
+
+        <div class="d-grid">
+            <button type="submit" class="btn btn-primary btn-lg">
+                Zatwierdź i sprawdź wyniki
+            </button>
         </div>
-    @endforeach
+    </form>
 @endsection
