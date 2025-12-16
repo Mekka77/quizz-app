@@ -15,12 +15,8 @@ return new class extends Migration
         $table->string('text');
         $table->timestamps();
     });
-    
-    }
 
-    /**
-     * Reverse the migrations.
-     */
+    }
     public function down(): void
     {
         Schema::dropIfExists('questions');

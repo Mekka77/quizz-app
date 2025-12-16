@@ -42,11 +42,7 @@
                         </div>
                     @endforeach
                 </div>
-                <button type="button" class="btn btn-info btn-sm add-answer">Dodaj odpowiedź</button>
-                <p class="text-danger mt-2" id="answer-error-message" style="display:none;">
-                    Musisz dodać co najmniej dwie odpowiedzi i zaznaczyć dokładnie jedną poprawną.
-                </p>
-                <hr class="my-4">
+
 
                 <button type="submit" class="btn btn-primary">Zapisz zmiany pytania</button>
                 <a href="{{ route('admin.quizzes.edit', $quiz) }}" class="btn btn-secondary">Anuluj</a>
@@ -93,7 +89,7 @@
                 addAnswerField();
             }
         }
-        
+
         addAnswerButton.addEventListener('click', function () {
             addAnswerField();
         });
@@ -120,7 +116,7 @@
                 });
             }
         });
-        
+
         updateRemoveButtons(); // Initial call
     });
 </script>

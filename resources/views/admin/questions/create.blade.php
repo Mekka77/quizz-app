@@ -39,11 +39,7 @@
                         </div>
                     @endforeach
                 </div>
-                <button type="button" class="btn btn-info btn-sm add-answer">Dodaj odpowiedź</button>
-                <p class="text-danger mt-2" id="answer-error-message" style="display:none;">
-                    Musisz dodać co najmniej dwie odpowiedzi i zaznaczyć dokładnie jedną poprawną.
-                </p>
-                <hr class="my-4">
+
 
                 <button type="submit" class="btn btn-primary">Zapisz pytanie</button>
                 <a href="{{ route('admin.quizzes.edit', $quiz) }}" class="btn btn-secondary">Anuluj</a>
@@ -84,7 +80,6 @@
             updateRemoveButtons();
         }
 
-        // Initialize with at least 2 answer fields if none from old input
         if (answersContainer.children.length === 0) {
             addAnswerField();
             addAnswerField();
@@ -111,7 +106,6 @@
             }
         });
 
-        // Ensure only one checkbox is checked
         answersContainer.addEventListener('change', function (event) {
             if (event.target.type === 'checkbox' && event.target.name.includes('[is_correct]')) {
                 answersContainer.querySelectorAll('input[type="checkbox"][name*="[is_correct]"]').forEach(checkbox => {
@@ -121,8 +115,8 @@
                 });
             }
         });
-        
-        updateRemoveButtons(); // Initial call
+
+        updateRemoveButtons();
     });
 </script>
 @endpush

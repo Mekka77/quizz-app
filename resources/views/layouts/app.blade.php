@@ -21,7 +21,6 @@
         </button>
 
         <div class="collapse navbar-collapse" id="mainNavbar">
-            <!-- Left Side Of Navbar -->
             <ul class="navbar-nav me-auto">
                 <li class="nav-item">
                     <a class="nav-link {{ request()->routeIs('welcome') ? 'active' : '' }}"
@@ -37,9 +36,8 @@
                 </li>
             </ul>
 
-            <!-- Right Side Of Navbar -->
             <ul class="navbar-nav ms-auto">
-                <!-- Authentication Links -->
+
                 @guest
                     @if (Route::has('login'))
                         <li class="nav-item">
