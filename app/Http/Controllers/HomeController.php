@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 class HomeController extends Controller
 {
     /**
-     *
      * @return void
      */
     public function __construct()
@@ -16,7 +15,6 @@ class HomeController extends Controller
     }
 
     /**
-     *
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index()
